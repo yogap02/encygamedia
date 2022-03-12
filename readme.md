@@ -6,13 +6,17 @@ Especially for my QA's friends who willing to learn API Testing.
 ## Specifications
 
 **Service Language** :  [Javascript](https://www.javascript.com/)
+
 **Framework** :  [Express](https://expressjs.com/)
+
 **Dependencies** : Can be look at package.json
+
 **API Documentation** : [Postman Docs](https://documenter.getpostman.com/view/17449443/UVsHV8r4)
 
 ## Prerequisite
 
 > Node JS : [Download](https://nodejs.org/en/download/)
+
 > NPM : [Info](https://www.npmjs.com/)
 
 ## Setting and Starting Up
@@ -27,5 +31,7 @@ You can have the baseUrl of the API in : `http://localhost:3000`
 ## Suggestion and Follow Up
 
 > Any suggestion and follow up should be reaching
+
 > Yoga Pasramakrisnan
+
 > Email : [yogalaxy69@gmail.com](mailto:yoga.pasramakrisnan@gmail.com)
