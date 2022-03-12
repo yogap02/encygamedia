@@ -1,0 +1,977 @@
+{
+	"info": {
+		"_postman_id": "c54dfffe-416e-4efc-8477-3482f48d0a00",
+		"name": "Encygamedia",
+		"description": "This project are meant to be a dummy project to be used by anyone who wanted to having an API to be used for testing.\n\nEspecially for my QA's friends who willing to learn API Testing.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Game Management",
+			"item": [
+				{
+					"name": "Post a Game",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "platform",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/game",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"game"
+							]
+						},
+						"description": "This endpoint is to adding new Game info to the store.\n\nThis endpoint require :\n\n*   **\\[Mandatory\\]** x-www-form-urlencoded body.\n*   **\\[Mandatory\\]** name parameter\n*   **\\[Mandatory\\]** platform parameter\n*   **\\[Mandatory\\]** year parameter\n*   **\\[Mandatory\\]** price parameter"
+					},
+					"response": [
+						{
+							"name": "Post Sugarloli Crush Saga",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Sugarloli Crush Saga",
+											"type": "text"
+										},
+										{
+											"key": "platform",
+											"value": "Android",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2021",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "15000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/game",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"game"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-4snWDrOQPj0cw7nwCcVU0nCBC2g\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Mar 2022 07:07:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"name\": \"Sugarloli Crush Saga\",\n    \"platform\": \"Android\",\n    \"year\": \"2021\",\n    \"price\": \"15000\",\n    \"id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit a Game",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "platform",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/game?id=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"game"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "This endpoint is to edit the added Game info in the store by locating the ID of the Game\n\nThis endpoint require :\n\n*   **\\[Mandatory\\]** x-www-form-urlencoded body.\n*   **\\[Mandatory\\]** name parameter\n*   **\\[Mandatory\\]** platform parameter\n*   **\\[Mandatory\\]** year parameter\n*   **\\[Mandatory\\]** price parameter"
+					},
+					"response": [
+						{
+							"name": "Edit Sugarloli Crush Saga to Gummy Match Puzzle 990",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Gummy Match Puzzle 990",
+											"type": "text"
+										},
+										{
+											"key": "platform",
+											"value": "Android",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2012",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "0",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/game?id=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"game"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-MhjuXbEgOGBLtJFUUY4gPTwhXrM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Mar 2022 07:16:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Gummy Match Puzzle 990\",\n    \"platform\": \"Android\",\n    \"year\": \"2012\",\n    \"price\": \"0\",\n    \"id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a Game",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/game",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"game"
+							]
+						},
+						"description": "This endpoint provide capabilities to user get a game based on the game name or game id.\n\nFor Get a game by name passing query parameter `name={name}`  \nand for get a game by ID passing query parameter `id={id}`\n\n**Cautions :** Only one query parameter allowed.\n\nAdditional information :  \nBy default the endpoint will return any similar game name, for making sure that it will only return the exact match name, adding `exact=true` in query parameter."
+					},
+					"response": [
+						{
+							"name": "Get a Game by Name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/game?name=Gummy",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"game"
+									],
+									"query": [
+										{
+											"key": "exact",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Gummy"
+										},
+										{
+											"key": "id",
+											"value": "6",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-FbxrPtrRSHfNOv0l906IScRDNB0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Mar 2022 07:19:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"Gummy Match Puzzle 990\",\n        \"platform\": \"Android\",\n        \"year\": \"2012\",\n        \"price\": \"0\",\n        \"id\": 1\n    }\n]"
+						},
+						{
+							"name": "Get a Game by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/game?id=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"game"
+									],
+									"query": [
+										{
+											"key": "exact",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Gummy",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-FbxrPtrRSHfNOv0l906IScRDNB0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Mar 2022 07:19:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"Gummy Match Puzzle 990\",\n        \"platform\": \"Android\",\n        \"year\": \"2012\",\n        \"price\": \"0\",\n        \"id\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get All Game",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/game",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"game"
+							]
+						},
+						"description": "Unlike Get a Game Request, this Get All Game will get all the available game information from stores."
+					},
+					"response": [
+						{
+							"name": "Get All Game",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/game",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"game"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Zelda",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-FbxrPtrRSHfNOv0l906IScRDNB0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Mar 2022 07:25:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"Gummy Match Puzzle 990\",\n        \"platform\": \"Android\",\n        \"year\": \"2012\",\n        \"price\": \"0\",\n        \"id\": 1\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "This collection are containing endpoints related to Game info management."
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"accessToken\", pm.response.json().accessToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@gamestore.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "This endpoint is to set login status of the user ( currently only available admin user ).\n\nBy hitting this endpoint will generating the access token to be able to perform any auth-required endpoint for this service.\n\nThis endpoint require :\n\n*   **\\[Mandatory\\]** x-www-form-urlencoded body\n*   **\\[Mandatory\\]** email parameter\n*   **\\[Mandatory\\]** password parameter"
+					},
+					"response": [
+						{
+							"name": "Login as Admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "admin@gamestore.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "256"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"100-yBQr7JZqgj38Fv/aSSF2Eb6yjwM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Mar 2022 07:28:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"admin@gamestore.com\",\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdhbWVzdG9yZS5jb20iLCJwYXNzd29yZCI6ImFkbWluIiwidGltZVN0YW1wIjoiMTY0NzA2OTMzOTQxMiIsImlhdCI6MTY0NzA3MDExNn0.rbx05hiXZqeIrZ7qAe2fK0QB6BegMCTMOnXyqybb5Us\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"logout"
+							]
+						},
+						"description": "This endpoint will destroy the valid generated access token."
+					},
+					"response": [
+						{
+							"name": "Logout as Admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-v2/9eO1ZHfCZ+dMUI2Gzeey066k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Mar 2022 07:31:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"admin@gamestore.com\",\n    \"status\": \"success\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This Collection is containing endpoints for Auth related activity."
+		},
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "Featured",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/home/featured",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"home",
+								"featured"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Zelda 2",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This endpoint well get only 5 games that will be shown in the home page"
+					},
+					"response": [
+						{
+							"name": "Featured Game List in Home Page",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/home/featured",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"home",
+										"featured"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Zelda 2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-FbxrPtrRSHfNOv0l906IScRDNB0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Mar 2022 07:33:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"Gummy Match Puzzle 990\",\n        \"platform\": \"Android\",\n        \"year\": \"2012\",\n        \"price\": \"0\",\n        \"id\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Footer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/home/footer",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"home",
+								"footer"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Zelda 2",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This endpoint will giving information for the footer in home page."
+					},
+					"response": [
+						{
+							"name": "Footer",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/home/footer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"home",
+										"footer"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Zelda 2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "213"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d5-S1omSTKdFq62Zlm1ywQYZ+juVoo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Mar 2022 07:33:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"contact\": \"Yoga Pasramakrisnan - yoga.pasramakrsinan@gmail.com\",\n    \"faqLink\": \"https://encygamedia.space/faq\",\n    \"toaLink\": \"https://encygamedia.space/termsofagreement\",\n    \"ppLink\": \"https://encygamedia.space/privacypolicy\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This Collection is for endpoints that will be used in home page."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
