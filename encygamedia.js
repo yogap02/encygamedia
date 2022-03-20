@@ -279,4 +279,4 @@ app.post('/logout', (req, res) => {
   }
 })
 
-app.listen(port, () => console.log(`\n#####################################################\n##                                                 ##\n##  Encygamedia Service is running on port : ${port}  ##\n##                                                 ##\n#####################################################\n`))
+app.listen(process.env.PORT || 5000, () => console.log(`\n#####################################################\n##                                                 ##\n##  Encygamedia Service is running on port : ${port}  ##\n##                                                 ##\n#####################################################\n`))
