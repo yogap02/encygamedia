@@ -92,12 +92,13 @@
 									]
 								},
 								"url": {
-									"raw": "http://localhost:3000/game",
-									"protocol": "http",
+									"raw": "https://encygamedia-api.herokuapp.com/game",
+									"protocol": "https",
 									"host": [
-										"localhost"
+										"encygamedia-api",
+										"herokuapp",
+										"com"
 									],
-									"port": "3000",
 									"path": [
 										"game"
 									]
@@ -238,12 +239,13 @@
 									]
 								},
 								"url": {
-									"raw": "http://localhost:3000/game?id=1",
-									"protocol": "http",
+									"raw": "https://encygamedia-api.herokuapp.com/game?id=1",
+									"protocol": "https",
 									"host": [
-										"localhost"
+										"encygamedia-api",
+										"herokuapp",
+										"com"
 									],
-									"port": "3000",
 									"path": [
 										"game"
 									],
@@ -320,12 +322,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/game?name=Gummy",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/game?name=Gummy",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"game"
 									],
@@ -483,12 +483,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/game",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/game",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"game"
 									],
@@ -540,6 +538,101 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"name\": \"Gummy Match Puzzle 990\",\n        \"platform\": \"Android\",\n        \"year\": \"2012\",\n        \"price\": \"0\",\n        \"id\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Delete a Game",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/game",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"game"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete a Game",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/game",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"game"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-3Sns9SSwMKZSYeMFnEirnh7LJYU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 20 Mar 2022 07:26:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
 						}
 					]
 				}
@@ -613,12 +706,10 @@
 									]
 								},
 								"url": {
-									"raw": "http://localhost:3000/login",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/login",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"login"
 									]
@@ -707,12 +798,10 @@
 									"urlencoded": []
 								},
 								"url": {
-									"raw": "http://localhost:3000/logout",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/logout",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"logout"
 									]
@@ -797,12 +886,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/home/featured",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/home/featured",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"home",
 										"featured"
@@ -889,12 +976,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/home/footer",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/home/footer",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"home",
 										"footer"
@@ -947,6 +1032,85 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"contact\": \"Yoga Pasramakrisnan - yoga.pasramakrsinan@gmail.com\",\n    \"faqLink\": \"https://encygamedia.space/faq\",\n    \"toaLink\": \"https://encygamedia.space/termsofagreement\",\n    \"ppLink\": \"https://encygamedia.space/privacypolicy\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Header",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/home/header",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"home",
+								"header"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Header",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/home/header",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"home",
+										"header"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"e5-QTl8/8WnOqvhDm6c259TPg9Qhk0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 20 Mar 2022 09:06:56 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"img1Url\": \"https://encygamedia.space/storage/image1.svg\",\n    \"img2Url\": \"https://encygamedia.space/storage/image2.svg\",\n    \"img3Url\": \"https://encygamedia.space/storage/image3.svg\",\n    \"img4Url\": \"https://encygamedia.space/storage/image4.svg\"\n}"
 						}
 					]
 				}
