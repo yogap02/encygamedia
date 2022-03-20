@@ -12,8 +12,9 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 const app = express()
-const port = 3000
+const port = 5000
 const stores = []
+const isDebug = false
 
 const accessToken = {
   admin:[],
@@ -21,7 +22,7 @@ const accessToken = {
 }
 
 const adminAccount = {
-  email: 'admin@gamestore.com',
+  email: 'admin@encygamedia.space',
   password: 'admin',
   timeStamp: ''
 }
@@ -240,6 +241,9 @@ app.delete('/game', (req, res) => {
 
 app.post('/login', (req, res) => {
   const cred = req.body
+  if (isDebug){
+    console.log(JSON.stringify(cred, null, 4))
+  }
   if (cred.email == undefined) {
     failedRes(res, 400, 400, 'User email is mandatory')
     return
@@ -279,4 +283,4 @@ app.post('/logout', (req, res) => {
   }
 })
 
-app.listen(process.env.PORT || 5000, () => console.log(`\n#####################################################\n##                                                 ##\n##  Encygamedia Service is running on port : ${port}  ##\n##                                                 ##\n#####################################################\n`))
+app.listen(process.env.PORT || port, () => console.log(`\n#####################################################\n##                                                 ##\n##  Encygamedia Service is running on port : ${port}  ##\n##                                                 ##\n#####################################################\n`))
