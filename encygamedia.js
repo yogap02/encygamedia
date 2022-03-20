@@ -73,6 +73,15 @@ function gameGetter(req, res, param, keyword) {
   }
 }
 
+app.get('/home/header', (req, res) => {
+  goodRes(res, 200, {
+    img1Url: 'https://encygamedia.space/storage/image1.svg',
+    img2Url: 'https://encygamedia.space/storage/image2.svg',
+    img3Url: 'https://encygamedia.space/storage/image3.svg',
+    img4Url: 'https://encygamedia.space/storage/image4.svg'
+  })
+})
+
 app.get('/home/featured', (req, res) => {
   goodRes(res, 200, stores.slice(0, 5))
 })
@@ -193,6 +202,38 @@ app.put('/game', (req, res) => {
   }
 })
 
+app.delete('/game', (req, res) => {
+  const gameId = req.body.id
+  const token = req.headers.authorization
+  if (gameId == undefined){
+    failedRes(res, 400, 400, 'Game ID is Mandatory')
+    return    
+  }
+  if (token == undefined) {
+    failedRes(res, 401, 401, 'Unauthorized')
+    return
+  }
+  if (accessToken.admin.indexOf(token.split(' ')[1]) == -1) {
+    failedRes(res, 403, 403, 'Insufficient permission')
+    return
+  }
+
+  let result = stores.filter((game) => {
+    if ((game.id.toString()) == gameId){
+      stores.pop(game)
+      return game
+    }
+  })
+  if (result.length){
+    goodRes(res, 204, '')
+    return
+  } else {
+    failedRes(res, 404, 404, 'Game Not Found')
+    return
+  }
+
+})
+
 app.post('/login', (req, res) => {
   const cred = req.body
   if (cred.email == undefined) {
@@ -235,4 +276,3 @@ app.post('/logout', (req, res) => {
 })
 
 app.listen(port, () => console.log(`\n#####################################################\n##                                                 ##\n##  Encygamedia Service is running on port : ${port}  ##\n##                                                 ##\n#####################################################\n`))
-
