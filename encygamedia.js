@@ -73,6 +73,10 @@ function gameGetter(req, res, param, keyword) {
   }
 }
 
+app.get('/', (req, res) => {
+  goodRes(res, 200, 'Hello, Welcome to Encygamedia !')
+})
+
 app.get('/home/header', (req, res) => {
   goodRes(res, 200, {
     img1Url: 'https://encygamedia.space/storage/image1.svg',
