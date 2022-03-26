@@ -244,12 +244,12 @@ app.post('/login', (req, res) => {
   if (isDebug){
     console.log(JSON.stringify(cred, null, 4))
   }
-  if (cred.email == undefined) {
+  if (cred.email == undefined | cred.email == null | cred.email == '') {
     failedRes(res, 400, 400, 'User email is mandatory')
     return
   }
-  if (cred.password == undefined) {
-    failedRes(res, 400, 400, 'User passowrd is mandatory')
+  if (cred.password == undefined | cred.password == null | cred.password == '') {
+    failedRes(res, 400, 400, 'User password is mandatory')
     return
   }
   if (cred.email == adminAccount.email && cred.password == adminAccount.password) {
@@ -262,19 +262,26 @@ app.post('/login', (req, res) => {
     })
     return
   } else {
-    failedRes(res, 400, 400, 'Login failed')
+    failedRes(res, 400, 400, 'Login failed, please check your email and password again')
     return
   }
 })
 
 app.post('/logout', (req, res) => {
   const token = req.headers.authorization
-  if (accessToken.admin.indexOf(token.split(' ')[1]) != -1) {
+  if (isDebug){
+    console.log(`Token : ${token}`)
+  }
+  if (token == undefined | token == ''| token == null) {
+    failedRes(res, 401, 401, 'Logout failed')
+    return    
+  }
+   if (accessToken.admin.indexOf(token.split(' ')[1]) != -1) {
     accessToken.admin.pop(token)
     adminAccount.timeStamp = new Date().getTime().toString()
     goodRes(res, 200, {
       email: adminAccount.email,
-      status: 'success'
+      status: 'Success'
     })
     return
   } else {
