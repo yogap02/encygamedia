@@ -88,7 +88,16 @@ app.get('/home/header', (req, res) => {
 })
 
 app.get('/home/featured', (req, res) => {
-  goodRes(res, 200, stores.slice(0, 5))
+  let result
+  if (stores.length == 0){
+    result = []
+  } else {
+    result = stores.slice(0, 5)
+  }
+  if(isDebug){
+    console.log(`Stores : ${JSON.stringify(result, null, 4)}`)
+  }
+  goodRes(res, 200, result)
 })
 
 app.get('/home/footer', (req, res) => {
@@ -120,6 +129,10 @@ app.get('/game', (req, res) => {
 app.post('/game', (req, res) => {
   const game = req.body
   const token = req.headers.authorization
+  if (isDebug){
+    console.log(`Game Request : ${JSON.stringify(game, null, 4)}`)
+    console.log(`token : ${token}`)
+  }
   if (token == undefined) {
     failedRes(res, 401, 401, 'Unauthorized')
     return
@@ -288,6 +301,20 @@ app.post('/logout', (req, res) => {
     failedRes(res, 400, 400, 'Logout failed')
     return
   }
+})
+
+app.delete('/util/flushgame', (req, res) => {
+  const token = req.headers.authorization
+  if (token == undefined) {
+    failedRes(res, 401, 401, 'Unauthorized')
+    return
+  }
+  if (accessToken.admin.indexOf(token.split(' ')[1]) == -1) {
+    failedRes(res, 403, 403, 'Insufficient permission')
+    return
+  }
+  stores.length = 0
+  goodRes(res, 204, '')
 })
 
 app.listen(process.env.PORT || port, () => console.log(`\n#####################################################\n##                                                 ##\n##  Encygamedia Service is running on port : ${port}  ##\n##                                                 ##\n#####################################################\n`))
