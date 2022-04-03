@@ -31,6 +31,21 @@ describe('Home Module', () => {
   });
 
   describe('Featured', () => {
+    it('(   ) Admin successfuly logged in', async () => {
+      await helper.getAdminToken(baseUrl, adminAccount).then((r) => {
+        adminAccount.token = r.accessToken;
+      });
+    });
+
+    it('(   ) Flush submitted game' , async () => {
+      await request(baseUrl)
+        .delete('/util/flushgame')
+        .set('Accept', 'application/json')
+        .set('Authorization', `Bearer ${adminAccount.token}`)
+        .then((res) => {
+          expect(res.statusCode).toEqual(204);
+        });
+    })
 
     it('( + ) User successfully get featured games - no games', async () => {
       await request(baseUrl)
@@ -40,12 +55,6 @@ describe('Home Module', () => {
           expect(res.statusCode).toEqual(200);
           expect(res.body).toEqual([]);
         });
-    });
-
-    it('(   ) Admin successfuly logged in', async () => {
-      await helper.getAdminToken(baseUrl, adminAccount).then((r) => {
-        adminAccount.token = r.accessToken;
-      });
     });
 
     for(let i = 0; i< gameSeed; i++){

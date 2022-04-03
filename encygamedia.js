@@ -141,20 +141,20 @@ app.post('/game', (req, res) => {
     failedRes(res, 403, 403, 'Insufficient permission')
     return
   }
-  if (game.name == undefined) {
-    failedRes(res, 400, 400, 'Game Name is mandatory')
+  if (game.name == undefined | game.name == null | game.name == '') {
+    failedRes(res, 400, 400, 'Game Name Is Mandatory')
     return
   }
-  if (game.year == undefined) {
-    failedRes(res, 400, 400, 'Game Year is mandatory')
+  if (game.year == undefined | game.year == null | game.year == '') {
+    failedRes(res, 400, 400, 'Game Year Is Mandatory')
     return
   }
-  if (game.platform == undefined) {
-    failedRes(res, 400, 400, 'Game Platform is mandatory')
+  if (game.platform == undefined | game.platform == null | game.platform == '') {
+    failedRes(res, 400, 400, 'Game Platform Is Mandatory')
     return
   }
-  if (game.price == undefined) {
-    failedRes(res, 400, 400, 'Game Price is mandatory')
+  if (game.price == undefined | game.price == null | game.price == '') {
+    failedRes(res, 400, 400, 'Game Price Is Mandatory')
     return
   }
   if (stores.some(i => i.name.includes(game.name))) {
@@ -185,20 +185,24 @@ app.put('/game', (req, res) => {
     failedRes(res, 403, 403, 'Insufficient permission')
     return
   }
-  if (updateGame.name == undefined) {
-    failedRes(res, 400, 400, 'Game Name is mandatory')
+  if (updateGame.name == undefined  |  updateGame.name == null |  updateGame.name == '') {
+    failedRes(res, 400, 400, 'Game Name Is Mandatory')
     return
   }
-  if (updateGame.year == undefined) {
-    failedRes(res, 400, 400, 'Game Year is mandatory')
+  if (updateGame.year == undefined  |  updateGame.year == null |  updateGame.year == '') {
+    failedRes(res, 400, 400, 'Game Year Is Mandatory')
     return
   }
-  if (updateGame.platform == undefined) {
-    failedRes(res, 400, 400, 'Game Platform is mandatory')
+  if (updateGame.platform == undefined  |  updateGame.platform == null |  updateGame.platform == '') {
+    failedRes(res, 400, 400, 'Game Platform Is Mandatory')
     return
   }
-  if (updateGame.price == undefined) {
-    failedRes(res, 400, 400, 'Game Price is mandatory')
+  if (updateGame.price == undefined  |  updateGame.price == null |  updateGame.price == '') {
+    failedRes(res, 400, 400, 'Game Price Is Mandatory')
+    return
+  }
+  if (stores.some(i => i.name.includes(updateGame.name))) {
+    failedRes(res, 409, 409, 'Game Is Already Existed')
     return
   }
   let result = stores.filter((game) => {
@@ -258,11 +262,11 @@ app.post('/login', (req, res) => {
     console.log(JSON.stringify(cred, null, 4))
   }
   if (cred.email == undefined | cred.email == null | cred.email == '') {
-    failedRes(res, 400, 400, 'User email is mandatory')
+    failedRes(res, 400, 400, 'User email Is Mandatory')
     return
   }
   if (cred.password == undefined | cred.password == null | cred.password == '') {
-    failedRes(res, 400, 400, 'User password is mandatory')
+    failedRes(res, 400, 400, 'User password Is Mandatory')
     return
   }
   if (cred.email == adminAccount.email && cred.password == adminAccount.password) {
