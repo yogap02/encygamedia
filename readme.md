@@ -24,9 +24,13 @@ Especially for my QA's friends who willing to learn API Testing.
 Open CLI ( Terminal ) in this directory and type command `npm i`, that will install the required dependencies,
 then after the installation done, type command `npm start` this will start the service on you localhost.
 
-You would find a notification in the console that the service is already running on specific port. ( the default is 3000)
+You would find a notification in the console that the service is already running on specific port. ( the default is 5000)
 
-You can have the baseUrl of the API in : `http://localhost:3000`
+You can have the baseUrl of the API in : `http://localhost:5000`
+
+## Running JEST Test
+
+For running jest test, you only need to state command `npm test`
 
 ## Suggestion and Follow Up
 
