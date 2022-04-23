@@ -12,8 +12,9 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 const app = express()
-const port = 3000
+const port = 5000
 const stores = []
+const isDebug = false
 
 const accessToken = {
   admin:[],
@@ -21,7 +22,7 @@ const accessToken = {
 }
 
 const adminAccount = {
-  email: 'admin@gamestore.com',
+  email: 'admin@encygamedia.space',
   password: 'admin',
   timeStamp: ''
 }
@@ -87,7 +88,16 @@ app.get('/home/header', (req, res) => {
 })
 
 app.get('/home/featured', (req, res) => {
-  goodRes(res, 200, stores.slice(0, 5))
+  let result
+  if (stores.length == 0){
+    result = []
+  } else {
+    result = stores.slice(0, 5)
+  }
+  if(isDebug){
+    console.log(`Stores : ${JSON.stringify(result, null, 4)}`)
+  }
+  goodRes(res, 200, result)
 })
 
 app.get('/home/footer', (req, res) => {
@@ -119,6 +129,10 @@ app.get('/game', (req, res) => {
 app.post('/game', (req, res) => {
   const game = req.body
   const token = req.headers.authorization
+  if (isDebug){
+    console.log(`Game Request : ${JSON.stringify(game, null, 4)}`)
+    console.log(`token : ${token}`)
+  }
   if (token == undefined) {
     failedRes(res, 401, 401, 'Unauthorized')
     return
@@ -127,20 +141,20 @@ app.post('/game', (req, res) => {
     failedRes(res, 403, 403, 'Insufficient permission')
     return
   }
-  if (game.name == undefined) {
-    failedRes(res, 400, 400, 'Game Name is mandatory')
+  if (game.name == undefined | game.name == null | game.name == '') {
+    failedRes(res, 400, 400, 'Game Name Is Mandatory')
     return
   }
-  if (game.year == undefined) {
-    failedRes(res, 400, 400, 'Game Year is mandatory')
+  if (game.year == undefined | game.year == null | game.year == '') {
+    failedRes(res, 400, 400, 'Game Year Is Mandatory')
     return
   }
-  if (game.platform == undefined) {
-    failedRes(res, 400, 400, 'Game Platform is mandatory')
+  if (game.platform == undefined | game.platform == null | game.platform == '') {
+    failedRes(res, 400, 400, 'Game Platform Is Mandatory')
     return
   }
-  if (game.price == undefined) {
-    failedRes(res, 400, 400, 'Game Price is mandatory')
+  if (game.price == undefined | game.price == null | game.price == '') {
+    failedRes(res, 400, 400, 'Game Price Is Mandatory')
     return
   }
   if (stores.some(i => i.name.includes(game.name))) {
@@ -171,20 +185,24 @@ app.put('/game', (req, res) => {
     failedRes(res, 403, 403, 'Insufficient permission')
     return
   }
-  if (updateGame.name == undefined) {
-    failedRes(res, 400, 400, 'Game Name is mandatory')
+  if (updateGame.name == undefined  |  updateGame.name == null |  updateGame.name == '') {
+    failedRes(res, 400, 400, 'Game Name Is Mandatory')
     return
   }
-  if (updateGame.year == undefined) {
-    failedRes(res, 400, 400, 'Game Year is mandatory')
+  if (updateGame.year == undefined  |  updateGame.year == null |  updateGame.year == '') {
+    failedRes(res, 400, 400, 'Game Year Is Mandatory')
     return
   }
-  if (updateGame.platform == undefined) {
-    failedRes(res, 400, 400, 'Game Platform is mandatory')
+  if (updateGame.platform == undefined  |  updateGame.platform == null |  updateGame.platform == '') {
+    failedRes(res, 400, 400, 'Game Platform Is Mandatory')
     return
   }
-  if (updateGame.price == undefined) {
-    failedRes(res, 400, 400, 'Game Price is mandatory')
+  if (updateGame.price == undefined  |  updateGame.price == null |  updateGame.price == '') {
+    failedRes(res, 400, 400, 'Game Price Is Mandatory')
+    return
+  }
+  if (stores.some(i => i.name.includes(updateGame.name))) {
+    failedRes(res, 409, 409, 'Game Is Already Existed')
     return
   }
   let result = stores.filter((game) => {
@@ -240,12 +258,15 @@ app.delete('/game', (req, res) => {
 
 app.post('/login', (req, res) => {
   const cred = req.body
-  if (cred.email == undefined) {
-    failedRes(res, 400, 400, 'User email is mandatory')
+  if (isDebug){
+    console.log(JSON.stringify(cred, null, 4))
+  }
+  if (cred.email == undefined | cred.email == null | cred.email == '') {
+    failedRes(res, 400, 400, 'User email Is Mandatory')
     return
   }
-  if (cred.password == undefined) {
-    failedRes(res, 400, 400, 'User passowrd is mandatory')
+  if (cred.password == undefined | cred.password == null | cred.password == '') {
+    failedRes(res, 400, 400, 'User password Is Mandatory')
     return
   }
   if (cred.email == adminAccount.email && cred.password == adminAccount.password) {
@@ -258,19 +279,26 @@ app.post('/login', (req, res) => {
     })
     return
   } else {
-    failedRes(res, 400, 400, 'Login failed')
+    failedRes(res, 400, 400, 'Login failed, please check your email and password again')
     return
   }
 })
 
 app.post('/logout', (req, res) => {
   const token = req.headers.authorization
-  if (accessToken.admin.indexOf(token.split(' ')[1]) != -1) {
+  if (isDebug){
+    console.log(`Token : ${token}`)
+  }
+  if (token == undefined | token == ''| token == null) {
+    failedRes(res, 401, 401, 'Logout failed')
+    return    
+  }
+   if (accessToken.admin.indexOf(token.split(' ')[1]) != -1) {
     accessToken.admin.pop(token)
     adminAccount.timeStamp = new Date().getTime().toString()
     goodRes(res, 200, {
       email: adminAccount.email,
-      status: 'success'
+      status: 'Success'
     })
     return
   } else {
@@ -279,4 +307,18 @@ app.post('/logout', (req, res) => {
   }
 })
 
-app.listen(process.env.PORT || 5000, () => console.log(`\n#####################################################\n##                                                 ##\n##  Encygamedia Service is running on port : ${port}  ##\n##                                                 ##\n#####################################################\n`))
+app.delete('/util/flushgame', (req, res) => {
+  const token = req.headers.authorization
+  if (token == undefined) {
+    failedRes(res, 401, 401, 'Unauthorized')
+    return
+  }
+  if (accessToken.admin.indexOf(token.split(' ')[1]) == -1) {
+    failedRes(res, 403, 403, 'Insufficient permission')
+    return
+  }
+  stores.length = 0
+  goodRes(res, 204, '')
+})
+
+app.listen(process.env.PORT || port, () => console.log(`\n#####################################################\n##                                                 ##\n##  Encygamedia Service is running on port : ${port}  ##\n##                                                 ##\n#####################################################\n`))
