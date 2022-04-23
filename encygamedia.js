@@ -262,11 +262,11 @@ app.post('/login', (req, res) => {
     console.log(JSON.stringify(cred, null, 4))
   }
   if (cred.email == undefined | cred.email == null | cred.email == '') {
-    failedRes(res, 400, 400, 'User email Is Mandatory')
+    failedRes(res, 400, 400, 'User Email Is Mandatory')
     return
   }
   if (cred.password == undefined | cred.password == null | cred.password == '') {
-    failedRes(res, 400, 400, 'User password Is Mandatory')
+    failedRes(res, 400, 400, 'User Password Is Mandatory')
     return
   }
   if (cred.email == adminAccount.email && cred.password == adminAccount.password) {

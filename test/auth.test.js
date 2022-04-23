@@ -60,7 +60,7 @@ describe('Auth Module', () => {
         .send(`password=${adminAccount.password}`)
         .then((res) => {
           expect(res.statusCode).toEqual(400);
-          expect(res.body.errorMessages).toEqual('User email is mandatory');
+          expect(res.body.errorMessages).toEqual('User Email Is Mandatory');
         });
     });
   
@@ -71,7 +71,7 @@ describe('Auth Module', () => {
         .send(`password=${adminAccount.password}`)
         .then((res) => {
           expect(res.statusCode).toEqual(400);
-          expect(res.body.errorMessages).toEqual('User email is mandatory');
+          expect(res.body.errorMessages).toEqual('User Email Is Mandatory');
         });
     });
   
@@ -83,7 +83,7 @@ describe('Auth Module', () => {
         .send(`password=`)
         .then((res) => {
           expect(res.statusCode).toEqual(400);
-          expect(res.body.errorMessages).toEqual('User password is mandatory');
+          expect(res.body.errorMessages).toEqual('User Password Is Mandatory');
         });
     });
   
@@ -94,7 +94,7 @@ describe('Auth Module', () => {
         .send(`email=${adminAccount.email}`)
         .then((res) => {
           expect(res.statusCode).toEqual(400);
-          expect(res.body.errorMessages).toEqual('User password is mandatory');
+          expect(res.body.errorMessages).toEqual('User Password Is Mandatory');
         });
     });
   });
